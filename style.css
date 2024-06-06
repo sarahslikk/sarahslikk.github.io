@@ -1,0 +1,130 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(135deg, #012d8d, #1a1a3c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+}
+.home-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffd700;
+    background: #000;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.title {
+    margin-bottom: 80px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.numbertoroman, .romantonumber {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+input {
+    background: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: 5px 0 0 5px;
+    font-size: 18px;
+    border: 2px solid #ebfffc;
+    border-right: none;
+    flex: 1;
+}
+
+button {
+    background-color: #1a1a3c;
+    color: #ffffff;
+    padding: 10px 20px;
+    height: 50px;
+    border: 2px solid #ebfffc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #012d8d;
+}
+
+/* Output and Error Styling */
+.numoutput, .romanoutput {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    background-color: #1a1a3c;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #ebfffc;
+    text-align: center;
+}
+
+.error, .errornums {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    color: #ff6666;
+    font-size: 16px;
+}
+
+.error, .errornums {
+    display: none;
+}
+
+.help {
+    white-space: pre-line;
+    position: absolute;
+    margin-left: 35px;
+    font-size: 18px;
+}
+.helpbutton {
+    background-color: #060806; /* Green */
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}

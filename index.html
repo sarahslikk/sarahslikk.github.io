@@ -1,47 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Homepage</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file for styling -->
+    <script src="romannumerals.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-    </header>
-
-    <section id="biography">
-        <h2>About Me</h2>
-        <p>Hello! My name is [Your Name]. I am a software developer with a passion for creating innovative solutions. I have experience in various programming languages and technologies. Feel free to explore my projects and connect with me on LinkedIn.</p>
-        <a href="https://www.linkedin.com/in/sarah-slikkerveer/" target="_blank">Connect with me on LinkedIn</a>
-        <a href="https://github.com/sarahslikk" target="_blank">View My Github</a>
-    </section>
-i
-    <section id="projects">
-        <h2>My Projects</h2>
+    <div class="title">
+        <h1>Roman Numerals Conversion</h1>
+        <h2><button class="helpbutton">Conversion Help</h2>
+        <p class="help"></p>
         
-        <div class="project">
-            <h3>Roman Numerals Converter</h3>
-            <p>A tool to convert numbers to Roman numerals and vice versa.</p>
-            <a href="roman numerals/index.html" class="project-button">View Project</a>
-        </div>
-
-        <div class="project">
-            <h3>Weather App</h3>
-            <p>A web application that provides daily weather information.</p>
-            <a href="project weather app/index.html" class="project-button">View Project</a>
-        </div>
-
-        <div class="project">
-            <h3>ServiceNow Point System</h3>
-            <p>A point system integrated with ServiceNow for tracking achievements and points.</p>
-            <a href="path/to/servicenow_point_system/index.html" class="project-button">View Project</a>
-        </div>
-    </section>
+    </div>
     
-    <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
-    </footer>
+    <div class="container">
+        
+        <div class="numbertoroman">
+            <div class="input-group">
+                <input type="text" placeholder="enter number" spellcheck="false">
+                <button>ENTER</button>
+            </div>
+            <div class="numoutput"><p></p></div>
+            <div class="errornums">
+                <p>Invalid numbers! Please reenter a number between 1 and 4000 only</p>
+            </div>
+        </div>
+        <div class="romantonumber">
+            <div class="input-group">
+                <input type="text" placeholder="enter roman numerals" spellcheck="false">
+                <button>ENTER</button>
+            </div>
+            <div class="romanoutput"><p></p></div>
+            <div class="error">
+                <p>Invalid letters! Please reenter roman numerals only</p>
+            </div>
+        </div>
+        <a href="../index.html" class="home-button">Home</a>
+    </div>
 </body>
 </html>
