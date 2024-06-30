@@ -1,0 +1,48 @@
+<pre><code class="language-javascript">
+//server side javascript
+//api: 
+//https://api.quotable.io/random
+(function() {
+    // fetch a random quote from the REST API
+    function getRandomQuote() {
+        var request = new sn_ws.RESTMessageV2('Quotes API', 'Get Random Quote');
+        var response;
+        try {
+            response = request.execute();
+        } catch (ex) {
+            gs.error('Error executing REST request: ' + ex.message);
+            return null;
+        }
+			//response body is object with variables
+			//of the quotes, author, etc.
+        var responseBody = response.getBody();
+        var httpStatus = response.getStatusCode();
+			
+			//status 200 means rest api request worked
+        if (httpStatus == 200) {
+            var responseObj = JSON.parse(responseBody);
+            return responseObj;
+        } else {
+            gs.error('Error: ' + httpStatus + ' - ' + responseBody);
+            return null;
+        }
+    }
+
+    // get random quote from api 
+	//returns object
+    var quote = getRandomQuote();
+    if (quote) {
+        //set data object with fetched quote
+        data.content = quote.content;
+        data.author = quote.author;
+    } else {
+        //no quote fetched, set empty data
+        data.content = '';
+        data.author = '';
+    }
+
+    //html/angular frontend
+
+})();
+
+</pre></code>

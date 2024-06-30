@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <div class="title">
+        <h1>Daily Weather</h1>
+        <a href="../index.html" class="home-button">Home</a>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="Enter city, state, or country name" spellcheck="false">
+                <button>SEARCH</button>
+            </div>
+            <div class="error">
+                <p>Invalid place name! Please re-enter!</p>
+            </div>
+            <div class="weather infohidden">
+                <div class="main-info">
+                    <div class="city-temp">
+                        <div class="main-icon">
+                            <img src="images/rain.png" class="weather-icon">
+                        </div>
+                        <h2 class="city">Reno</h2>
+                        <h1 class="temp">70°F</h1>
+                        <div class="temp-conversion">
+                            <button class="fah">°F</button>
+                            <button class="cel">°C</button>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="detail-item">
+                            <img src="images/humidity.png" class="detail-icon">
+                            <div>
+                                <p class="humidity">29%</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <img src="images/wind.png" class="detail-icon">
+                            <div>
+                                <p class="wind">4.63 km/h</p>
+                                <p>Wind Speed</p>
+                                <div class="speed-conversion">
+                                    <button class="mph">Mph</button>
+                                    <button class="kph">Km/h</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-info">
+                    <button class="more-info-button">More Info</button>
+                </div>
+            </div>
+        </div>
+        <div class="more-info-card card infocardhidden">
+            <h1>More Information</h1>
+            <p class="info-text"></p>
+        </div>
+    </div>
+</body>
+</html>

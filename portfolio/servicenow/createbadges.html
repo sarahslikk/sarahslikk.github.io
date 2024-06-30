@@ -1,0 +1,40 @@
+<pre><code class="language-javascript">
+var CreateBadges = Class.create();
+CreateBadges.prototype = {
+    initialize: function() {},
+
+    create: function(leaderboardGR, badgesObj, badge, time) {
+        var badgeDetails = badgesObj[badge];
+
+        var existingBadgeGR = new GlideRecord('x_1312187_point_pi_badges_and_achievements');
+        existingBadgeGR.addQuery('user', leaderboardGR.getValue('user'));
+        existingBadgeGR.addQuery('badge_name', badge);
+        existingBadgeGR.query();
+
+        if (!existingBadgeGR.next()) {
+            var newBadgeGR = new GlideRecord('x_1312187_point_pi_badges_and_achievements');
+            newBadgeGR.initialize();
+            newBadgeGR.setValue('user', leaderboardGR.getValue('user'));
+            newBadgeGR.setValue('badge_name', badge);
+            newBadgeGR.setValue('badge_label', this._toLabel(badge));
+            newBadgeGR.setValue('badge_description', badgeDetails.description);
+            newBadgeGR.insert();
+
+            gs.eventQueue('x_1312187_point_pi.mileStoneEmail', newBadgeGR, badge, badgeDetails.description);
+            gs.info('New badge ' + badge + ' created for user: ' + leaderboardGR.getValue('user'));
+
+            return newBadgeGR;
+        } else {
+            return null;
+        }
+    },
+
+    _toLabel: function(badge) {
+        return badge.split('_').map(function(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(' ');
+    },
+
+    type: 'CreateBadges'
+};
+</pre></code>

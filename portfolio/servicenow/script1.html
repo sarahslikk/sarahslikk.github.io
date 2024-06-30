@@ -1,0 +1,143 @@
+<pre><code class="language-javascript">
+    var PointCalculator = Class.create();
+PointCalculator.prototype = {
+    initialize: function() {
+		this.incidentpoints = this._pointValues('1'); //incident
+		this.problempoints = this._pointValues('2');//problem
+		this.points = this._pointValues('3');//daily point -- not used yet for anything
+	},
+
+	_pointValues: function(type) {
+		var points = {};
+		var gr = new GlideRecord('x_1312187_point_pi_point_award_values');
+		gr.addQuery('point_type', type);
+		gr.query();
+		while (gr.next()) {
+			var name = gr.getValue('name');
+			points[name] = parseInt(gr.getValue('point_value'));
+		}
+		return points;
+	},
+
+    updateIncidentPoints: function(leaderboardRecord, incidentRecord) {
+        try {
+            var totalPoints = leaderboardRecord.getValue('total_points');
+            var currentPoints = parseInt(leaderboardRecord.getValue('incident_points'));
+            var incidentNumber = incidentRecord.getValue('number'); //get incident number
+            var pointsEntry = ' ';
+            var incidentsResolved = parseInt(leaderboardRecord.getValue('total_incidents_resolved'));
+            //points entry
+            if (incidentRecord.getValue('priority') === '1') {
+                currentPoints = currentPoints + this.incidentpoints['Priority 1'];
+                totalPoints = parseInt(totalPoints) + this.incidentpoints['Priority 1'];
+                pointsEntry = ' +' + this.incidentpoints['Priority 1'] + ' points added for Priority 1 Incident Resolved ' + incidentNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.incidentpoints['Priority 1'] + ' points!');
+
+            }
+            if (incidentRecord.getValue('priority') === '2') {
+                currentPoints = currentPoints + this.incidentpoints['Priority 2'];
+                totalPoints = parseInt(totalPoints) + this.incidentpoints['Priority 2'];
+                pointsEntry = ' +' + this.incidentpoints['Priority 2'] + ' points added for Priority 2 Incident Resolved ' + incidentNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.incidentpoints['Priority 2'] + ' points!');
+
+            }
+            if (incidentRecord.getValue('priority') === '3') {
+                currentPoints = currentPoints + this.incidentpoints['Priority 3'];
+                totalPoints = parseInt(totalPoints) + this.incidentpoints['Priority 3'];
+                pointsEntry = ' +' + this.incidentpoints['Priority 3'] + ' points added for Priority 3 Incident Resolved ' + incidentNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.incidentpoints['Priority 3'] + ' points!');
+            }
+            if (incidentRecord.getValue('priority') === '4') {
+                currentPoints = currentPoints + this.incidentpoints['Priority 4'];
+                totalPoints = parseInt(totalPoints) + currentPoints + this.incidentpoints['Priority 4'];
+                pointsEntry = ' +' + this.incidentpoints['Priority 4'] + ' points added for Priority 4 Incident Resolved ' + incidentNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.incidentpoints['Priority 4'] + ' points!');
+            }
+            if (incidentRecord.getValue('priority') === '5') {
+                currentPoints = currentPoints + this.incidentpoints['Priority 5'];
+                totalPoints = parseInt(totalPoints) + this.incidentpoints['Priority 5'];
+                pointsEntry = ' +' + this.incidentpoints['Priority 5'] + ' points added for Priority 5 Incident Resolved ' + incidentNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.incidentpoints['Priority 5'] + ' points!');
+
+            }
+            var history = leaderboardRecord.getValue('points_history') || ''; //current points history or initialize as empty string
+            var newHistory = new GlideDateTime().getLocalDate() + pointsEntry + '\n' + history;
+            incidentsResolved += 1;
+            leaderboardRecord.setValue('total_incidents_resolved', incidentsResolved);
+
+            leaderboardRecord.setValue('points_history', newHistory.trim());
+
+            leaderboardRecord.setValue('incident_points', currentPoints);
+            leaderboardRecord.setValue('total_points', totalPoints);
+
+            leaderboardRecord.update();
+			
+
+            gs.info('Script include point calculator called. Points updated for Incident.');
+        } catch (ex) {
+            gs.error('Error updating incident points: ' + ex);
+        }
+    },
+
+    updateProblemPoints: function(leaderboardRecord, problemRecord) {
+        try {
+            var totalPoints = leaderboardRecord.getValue('total_points');
+            var currentPoints = parseInt(leaderboardRecord.getValue('problem_resolution_points'));
+            var problemNumber = problemRecord.getValue('number');
+            var pointsEntry = ' ';
+            if (problemRecord.getValue('priority') === '1') {
+                currentPoints = currentPoints + this.problempoints['Priority 1'];
+                totalPoints = parseInt(totalPoints) + this.problempoints['Priority 1'];
+                pointsEntry = ' +' + this.problempoints['Priority 1'] + ' points added for Priority 1 Problem Resolved ' + problemNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.problempoints['Priority 1'] + ' points!');
+
+            }
+            if (problemRecord.getValue('priority') === '2') {
+                currentPoints = currentPoints + this.problempoints['Priority 2'];
+                totalPoints = parseInt(totalPoints) + this.problempoints['Priority 2'];
+                pointsEntry = ' +' + this.problempoints['Priority 2'] + ' points added for Priority 2 Problem Resolved ' + problemNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.problempoints['Priority 2'] + ' points!');
+
+            }
+            if (problemRecord.getValue('priority') === '3') {
+                currentPoints = currentPoints + this.problempoints['Priority 3'];
+                totalPoints = parseInt(totalPoints) + this.problempoints['Priority 3'];
+                pointsEntry = ' +' + this.problempoints['Priority 3'] + ' points added for Priority 3 Problem Resolved ' + problemNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.problempoints['Priority 3'] + ' points!');
+
+            }
+            if (problemRecord.getValue('priority') === '4') {
+                currentPoints = currentPoints + this.problempoints['Priority 4'];
+                totalPoints = parseInt(totalPoints) + this.problempoints['Priority 4'];
+                pointsEntry = ' +' + this.problempoints['Priority 4'] + ' points added for Priority 4 Problem Resolved ' + problemNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.problempoints['Priority 4'] + ' points!');
+
+            }
+            if (problemRecord.getValue('priority') === '5') {
+                currentPoints = currentPoints + this.problempoints['Priority 5'];
+                totalPoints = parseInt(totalPoints) + this.problempoints['Priority 5'];
+                pointsEntry = ' +' + this.problempoints['Priority 5'] + ' points added for Priority 5 Problem Resolved ' + problemNumber;
+				gs.addInfoMessage('Congratulations! You have earned: ' + this.problempoints['Priority 5'] + ' points!');
+
+            }
+            var history = leaderboardRecord.getValue('points_history') || ''; //get current points history or initialize as empty string
+            var newHistory = new GlideDateTime().getLocalDate() + pointsEntry + '\n' + history;
+
+            leaderboardRecord.setValue('points_history', newHistory.trim());
+
+            leaderboardRecord.setValue('problem_resolution_points', currentPoints);
+            leaderboardRecord.setValue('total_points', totalPoints);
+
+            leaderboardRecord.update();
+
+            gs.info('Script include point calculator called. Points updated for Problem Resolution.');
+
+        } catch (ex) {
+            gs.error('Error updating problem resolution points: ' + ex);
+        }
+    },
+
+    type: 'PointCalculator'
+};
+</code>
+</pre>

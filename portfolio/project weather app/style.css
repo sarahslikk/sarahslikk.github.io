@@ -1,0 +1,264 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ff6933, #07e7ab);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #ffd000;
+    margin-top: 70px;
+}
+
+.home-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffd700;
+    background: #000;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+/* Main Weather Card */
+.card {
+    width: 100%;
+    max-width: 800px;
+    color: #000;
+    margin: 20px 0;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.more-info-card {
+    width: 100%;
+    max-width: 500px;
+    position: absolute;
+    background: linear-gradient(135deg, #ffca68, #d57744);
+    color: #fff;
+    margin: 20px 0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Weather Section */
+.weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* Main Info */
+.main-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 50px;
+    width: 100%;
+}
+
+/* City, Temp and Icon */
+.city-temp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Temp and Conversion */
+.temp-conversion {
+    display: flex;
+    gap: 5px;
+}
+
+/* Details */
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 20px;
+    text-align: center;
+    gap: 20px;
+}
+
+/* Detail Item */
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.detail-icon {
+    width: 80px;
+    margin-bottom: 5px;
+}
+
+.humidity, .wind {
+    font-size: 22px;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+
+/* Search Bar */
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search input {
+    background: #fff;
+    color: #000;
+    padding: 10px 20px;
+    height: 50px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    flex: 1;
+    font-size: 18px;
+}
+
+.search button {
+    background: #ffd700;
+    border-radius: 0 5px 5px 0;
+    width: 90px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search button:hover {
+    background-color: #ffcc00;
+}
+
+/* Weather Icon */
+.weather-icon {
+    width: 200px;
+    margin: 20px;
+}
+
+/* Weather Details */
+.weather h1 {
+    font-size: 66px;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.weather h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin: 5px 10px;
+}
+
+.weather h3 {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 5px 20px;
+}
+
+/* Error Message */
+.error {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #821919;
+    display: none;
+}
+
+/* Conversion Buttons */
+.temp-conversion button, .speed-conversion button, .more-info-button {
+    font-size: 17px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: transparent;
+    color: #ffd700;
+}
+
+.more-info-button {
+    margin-left: 50px;
+}
+
+.temp-conversion button:hover, .speed-conversion button:hover, .more-info-button:hover {
+    background-color: #ffd700;
+    color: #000;
+}
+
+/* Additional Info Text */
+.info-text {
+    white-space: pre-line;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.more-info-card h1 {
+    font-family: 'Courier New', monospace;
+    color: #ffffff;
+}
+
+/* Hidden Elements */
+.infohidden {
+    display: none;
+}
+
+.more-info-card {
+    display: none;
+}
+

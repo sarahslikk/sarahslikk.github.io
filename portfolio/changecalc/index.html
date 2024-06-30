@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Change Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div><a href="../index.html" type="submit">Home</a></div>
+        <h1>Change Calculator</h1>
+        <form id="change-form">
+            <div class="form-group">
+                <label for="amount-due">Amount Due:</label>
+                <input type="text" name="amount-due" id="amount-due" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+                <label for="amount-received">Amount Received:</label>
+                <input type="text" name="amount-received" id="amount-received" placeholder="0.00" required>
+            </div>
+            <input type="submit" name="submit" id="calculate-change" value="Calculate">
+        </form>
+        <div id="change-output">
+            <h2>Change Due:</h2>
+            <div class="change-details">
+                <div class="change-card">
+                    <p id="Hundreds-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Fifties-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Twenties-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Tens-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Fives-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Dollars-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Quarters-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Dimes-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Nickels-output"></p>
+                </div>
+                <div class="change-card">
+                    <p id="Pennies-output"></p>
+                </div>
+            </div>
+            <div class="total-change">
+                <h3>Total Change Due:</h3>
+                <p id="total-change-output"></p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
