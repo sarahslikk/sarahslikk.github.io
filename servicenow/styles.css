@@ -13,27 +13,31 @@ header {
     border-bottom: 2px solid #a9c0db; 
 }
 
-#biography, #projects {
-    margin: 2em;
+.container {
+    margin: 2em auto; /* Center container with margin on top and bottom */
+    max-width: 800px; /* Limit container width */
     padding: 2em;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#biography h2, #projects h2 {
+.container h2 {
     border-bottom: 2px solid #a9c0db;
     padding-bottom: 0.5em;
+    margin-bottom: 1em; /* Add margin below section titles */
 }
 
-#biography p {
+.container p {
     font-size: 1.1em;
     color: #555;
+    line-height: 1.6; /* Improve readability with increased line height */
 }
 
-#biography a {
+.container a {
     display: inline-block;
     margin-top: 1em;
+    margin-bottom: 1em; /* Add margin below links */
     padding: 0.5em 1em;
     background-color: #87ceeb; 
     color: white;
@@ -42,30 +46,45 @@ header {
     transition: background-color 0.3s ease;
 }
 
-#biography a:hover {
+.container a:hover {
     background-color: #76bddb; 
 }
 
-#projects .project {
-    margin-bottom: 2em;
+.section {
+    margin-bottom: 2em; /* Add margin below each section */
 }
 
-.project-button {
-    display: inline-block;
-    margin-top: 0.5em;
-    padding: 0.5em 1em;
+.section .script-container {
+    margin-bottom: 1em; /* Add margin below each script container */
+}
+
+.toggle-button {
     background-color: #b0c4de; 
     color: white;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    padding: 0.5em 1em;
+    display: inline-block;
+    margin-bottom: 1em; /* Add margin below each script toggle button */
 }
 
-.project-button:hover {
-    background-color: #a1b8d2; 
+.script-content {
+    width: 100%;
+    max-width: 100%; /* Set maximum width for iframe */
+    min-height: 400px; /* Set minimum height for iframe */
+    border: 1px solid #ccc;
+    margin-top: 1em; /* Add margin above the iframe */
+    overflow-y: auto; /* Add scroll bar for content overflow */
 }
 
-footer {
+.section img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline image spacing issues */
+    margin: 0 auto; /* Center images within their container */
+}
+
+.footer {
     text-align: center;
     padding: 1em 0;
     background-color: #b0c4de;
@@ -74,4 +93,18 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+.toggle-button {
+    background-color: #b0c4de; 
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    display: inline-block;
+    margin-bottom: 1em; /* Add margin below each script toggle button */
+    cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.toggle-button:hover {
+    background-color: #a1b8d2; 
 }
