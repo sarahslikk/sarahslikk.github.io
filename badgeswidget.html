@@ -1,0 +1,160 @@
+<pre><code class="language-javascript">
+
+(function() {
+    //generate a random color
+	//only for badge names not for badge cards
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // BadgeWidgetScriptInclude
+    var badgeWidget = new x_1312187_point_pi.BadgeWidget();
+
+    //get badges for the current user
+	//calling script include method
+    var userId = gs.getUserID();
+    var badges = badgeWidget.userHasRecord(userId);
+
+    // put badges and color function in map/object
+    data.badges = badges.map(function(badge) {
+        return {
+            name: badge.name,
+            description: badge.description,
+					  image: badge.image,
+            nameColor: getRandomColor() 
+        };
+    });
+
+
+    return { badges: data.badges };
+})();
+</pre><code>
+    <pre><code>
+        //HTML/angular
+        <div id="widget-container">
+            <div class="title">You Have Achieved {{ data.badges.length }} Total Badges!</div>
+            <div class="card">
+              <div class="badges">
+                <div ng-if="data.badges.length === 0" class="error-message">
+                  No badges earned.
+                </div>
+                <div ng-if="data.badges.length > 0" ng-repeat="badge in data.badges" class="badge">
+                  <img ng-src="{{badge.image}}" width="150" height="150" alt="Badge Image">
+                  <div class="badge-name" ng-style="{'background-color': badge.nameColor}">{{ badge.name }}</div>
+                  <div class="badge-hover-text">{{ badge.description }}</div> <!-- Hover text -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+//CSS STYLING
+
+#widget-container {
+    padding: 20px;
+    background: linear-gradient(135deg, #f3f3f3, #ededed);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 50px auto;
+  }
+  .title {
+    text-align: center;
+    font-size: 25px;
+    
+  }
+  .badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; 
+  }
+  
+  .badge {
+    position: relative;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    background: linear-gradient(135deg, #d4fc79, #96e6a1); /* Original green color */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 180px;
+    overflow: visible; 
+    flex: 1 1 calc(33% - 20px); 
+  }
+  
+  .badge:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .badge img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; 
+    position: relative;
+    z-index: 1; 
+  }
+  
+  .badge-name {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 10px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    white-space: normal; 
+  }
+  
+  .badge-hover-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border-radius: 10px;
+    overflow: visible; 
+    word-wrap: break-word; 
+    white-space: normal; 
+    max-width: 350px; 
+    z-index: 10; 
+  }
+  
+  
+  .badge:hover .badge-hover-text {
+    display: block;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+  }
+  
+  .badge:hover {
+    animation: float 2s infinite ease-in-out;
+  }
+  
+          
+    </code></pre>

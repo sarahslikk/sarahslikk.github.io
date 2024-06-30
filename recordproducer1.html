@@ -1,0 +1,35 @@
+<pre><code class="language-javascript">
+
+(function() {
+
+    if (current.user) {
+        var userRecord = new GlideRecord('x_1312187_point_pi_point_leaderboard');
+        userRecord.addQuery('user', current.user);
+        userRecord.query();
+
+        if (userRecord.next()) {
+            gs.addInfoMessage('User ' + current.user.user_name + ' is already part of Point PI!');
+            current.setAbortAction(true);
+        } else {
+
+
+            gs.addInfoMessage('Thank you for submitting your request! Please give the system some time to add the users.');
+        }
+    } else if (current.group) {
+        var groupRecord = new GlideRecord('x_1312187_point_pi_request_for_point_pioneer');
+        groupRecord.addQuery('group', current.group);
+		groupRecord.addQuery('status', 'Complete');
+        groupRecord.query();
+
+        if (groupRecord.next()) {
+            gs.addInfoMessage('This group ' + current.group.name + ' has already been requested for Point PI.');
+            current.setAbortAction(true);
+        } else {
+
+            gs.addInfoMessage('Thank you for submitting your request! Please give the system some time to add the users.');
+        }
+    }
+})();
+
+</code>
+</pre>
